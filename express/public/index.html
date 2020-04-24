@@ -80,7 +80,7 @@
       let connection = new Connection(new WebSocket(url));
       function flush(getContent) {
         if (queue.length === 0) return;
-        connection.send(queue, version);
+        connection.send(queue, version++);
         queue = [];
         content = getContent();
       }

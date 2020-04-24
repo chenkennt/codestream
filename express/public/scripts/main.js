@@ -49,7 +49,7 @@ Connection.prototype.sync = function() {
 Connection.prototype.send = function(changes, version) {
   this._socket.send(JSON.stringify({
     name: 'changes',
-    data: [changes, version++]
+    data: [changes, version]
   }));
 };
 
