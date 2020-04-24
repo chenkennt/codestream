@@ -4,6 +4,7 @@
       "authLevel": "function",
       "type": "httpTrigger",
       "direction": "in",
+      "route": "codestream/connect",
       "name": "req",
       "methods": [
         "get",

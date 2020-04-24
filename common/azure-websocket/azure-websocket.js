@@ -102,9 +102,9 @@ AzureWebsocket.prototype.onDisconnected = async function (headers) {
 
 AzureWebsocket.prototype.onMessage = async function (headers, body) {
   let context = this.parseEvent(headers);
-  let obj = JSON.parse(body);
-  console.log(`${obj.name} received`);
-  if (this._handlers[obj.name]) return await this._handlers[obj.name](context, obj.data);
+  if (typeof body === 'string') body = JSON.parse(body);
+  console.log(`${body.name} received`);
+  if (this._handlers[body.name]) return await this._handlers[body.name](context, body.data);
   else throw `unrecognized message: ${body}`;
 };
 

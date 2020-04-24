@@ -9,7 +9,17 @@
           "OPTIONS"
         ]
       },
-      "backendUri": "http://localhost:8080/index.html"
+      "backendUri": "%ContentRoot%/index.html"
+    },
+    "scripts": {
+      "matchCondition": {
+        "route": "/scripts/{*file}",
+        "methods": [
+          "GET",
+          "OPTIONS"
+        ]
+      },
+      "backendUri": "%ContentRoot%/scripts/{file}"
     }
   }
 }

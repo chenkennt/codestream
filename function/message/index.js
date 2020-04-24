@@ -1,9 +1,8 @@
 const socket = require('../websocket.js');
 
 module.exports = async function (context, req) {
-  let ret = await socket.onConnected(req.headers);
+  let body = await socket.onMessage(req.headers, req.body);
   context.res = {
-    body: ret.body,
-    headers: ret.headers
+    body: body
   };
 };

@@ -4,7 +4,7 @@
       "authLevel": "function",
       "type": "httpTrigger",
       "direction": "in",
-      "route": "codestream/disconnect",
+      "route": "codestream/message",
       "name": "req",
       "methods": [
         "get",
