@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "dependencies": {
-    "azure-websocket": "git+https://git@github.com/chenkennt/azure-websocket.git"
+    "codestream-websocket": "file:../common"
   },
   "scripts": {
     "test": "echo \"No tests yet...\""

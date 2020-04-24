@@ -1,4 +1,4 @@
-const socket = require('../websocket.js');
+const socket = require('codestream-websocket')(process.env.Azure__SignalR__ConnectionString, 'codestream');
 
 module.exports = async function (context, req) {
   let body = await socket.onMessage(req.headers, req.body);

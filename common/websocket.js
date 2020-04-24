@@ -16,26 +16,18 @@ let handlers = {
     if (context.query.join) await context.socket.sendToUser(context.query.join, 'left');
     else await context.socket.sendToGroup(context.userId, 'stopped');
   },
-  changes: async (context, data) => {
-    await context.socket.sendToGroup(context.userId, 'changes', {
-      version: data.version,
-      changes: data.changes
-    });
+  changes: async (context, [changes, version]) => {
+    await context.socket.sendToGroup(context.userId, 'changes', [changes, version]);
   },
   sync: async context => {
     let master = context.userId.slice(0, 8);
     await context.socket.addToGroup(context.connectionId, context.query.join);
     await context.socket.sendToUser(master, 'sync', context.userId);
   },
-  all: async (context, data) => {
-    await context.socket.sendToUser(data.user, 'all', {
-      content: data.content,
-      version: data.version
-    });
+  all: async (context, [user, content, version]) => {
+    await context.socket.sendToUser(user, 'all', [content, version]);
   }
 };
 
 const AzureWebsocket = require('azure-websocket');
-const connectionString = process.env.Azure__SignalR__ConnectionString;
-const hubName = 'codestream';
-module.exports = new AzureWebsocket(connectionString, hubName, handlers);
+module.exports = (connString, hubName) => new AzureWebsocket(connString, hubName, handlers);

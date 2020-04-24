@@ -49,21 +49,14 @@ Connection.prototype.sync = function() {
 Connection.prototype.send = function(changes, version) {
   this._socket.send(JSON.stringify({
     name: 'changes',
-    data: {
-      changes: changes,
-      version: version++
-    }
+    data: [changes, version++]
   }));
 };
 
 Connection.prototype.sendAll = function(userId, content, version) {
   this._socket.send(JSON.stringify({
     name: 'all',
-    data: {
-      user: userId,
-      content: content,
-      version: version
-    }
+    data: [userId, content, version]
   }));
 };
 

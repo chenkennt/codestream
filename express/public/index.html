@@ -131,8 +131,8 @@
         editor.clearSelection();
       }
 
-      function newChanges(changes) {
-        if (!buffer.push(changes)) sync();
+      function newChanges(changes, version) {
+        if (!buffer.push({ changes: changes, version: version })) sync();
         applyChanges();
       }
 
@@ -151,8 +151,8 @@
         updateStatus('Watching');
         sync();
       });
-      connection.on('changes', data => newChanges(data));
-      connection.on('all', data => allContent(data.content, data.version));
+      connection.on('changes', ([changes, version]) => newChanges(changes, version));
+      connection.on('all', ([content, version]) => allContent(content, version));
       connection.on('stopped', () => updateStatus('Stopped'));
     }
 
