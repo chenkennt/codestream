@@ -7,7 +7,6 @@
       "route": "codestream/disconnect",
       "name": "req",
       "methods": [
-        "get",
         "post"
       ]
     },

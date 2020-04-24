@@ -7,7 +7,6 @@
       "route": "codestream/message",
       "name": "req",
       "methods": [
-        "get",
         "post"
       ]
     },

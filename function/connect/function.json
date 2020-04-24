@@ -7,7 +7,6 @@
       "route": "codestream/connect",
       "name": "req",
       "methods": [
-        "get",
         "post"
       ]
     },
